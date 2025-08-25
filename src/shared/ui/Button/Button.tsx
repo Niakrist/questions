@@ -1,15 +1,43 @@
 import React from "react";
+import cn from "classnames";
 
-interface IButtonProps
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
-  children: React.ReactNode;
-}
+import styles from "./Button.module.css";
+import type { IButtonProps } from "./Button.props";
 
-const Button = ({ children }: IButtonProps) => {
-  return <button>{children}</button>;
+const Button = ({
+  children,
+  color,
+  bgColor,
+  fontWeght,
+  textSize,
+  className,
+  borderRadius,
+  ...props
+}: IButtonProps): React.JSX.Element => {
+  return (
+    <button
+      {...props}
+      className={cn(
+        styles.button,
+        {
+          [styles.textSmall]: textSize === "small",
+          [styles.textNormal]: textSize === "normal",
+          [styles.textBig]: textSize === "big",
+          [styles.textPurple]: color === "purple",
+          [styles.textBlack]: color === "black",
+          [styles.textWhite]: color === "white",
+          [styles.bgPurple]: bgColor === "purple",
+          [styles.bgTransparent]: bgColor === "transparent",
+          [styles.fw500]: fontWeght === "fw500",
+          [styles.fw600]: fontWeght === "fw600",
+          [styles.br2]: borderRadius === "br2",
+          [styles.br12]: borderRadius === "br12",
+        },
+        className
+      )}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

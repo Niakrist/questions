@@ -1,0 +1,46 @@
+.textPurple {
+  color: var(--purple-700);
+}
+
+.textBlack {
+  color: var(--black-700);
+}
+
+.textWhite {
+  color: var(--white-900);
+}
+
+.bgPurple {
+  background-color: var(--purple-700);
+}
+
+.bgTransparent {
+  background-color: transparent;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+
+.fw600 {
+  font-weight: 600;
+}
+
+.textSmall {
+  font-size: 14px;
+}
+
+.textNormal {
+  font-size: 16px;
+}
+
+.textBig {
+  font-size: 18px;
+}
+
+.br2 {
+  border-radius: 2px;
+}
+.br12 {
+  border-radius: 12px;
+}

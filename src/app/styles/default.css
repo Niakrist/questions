@@ -6,4 +6,38 @@
 
 body {
   margin: 0;
+  font-family: var(--font-family);
+}
+
+button {
+  padding: 0;
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 0;
+  display: inline-block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
 }
