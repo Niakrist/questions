@@ -1,0 +1,23 @@
+.label {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: var(--bg);
+
+  font-size: 14px;
+  color: var(--black-800);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.value {
+  margin-left: 10px;
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: var(--purple-700);
+
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 600;
+  line-height: 1.2;
+}
