@@ -1,0 +1,58 @@
+.footer {
+  background-color: var(--black-25);
+}
+
+.section {
+  border-radius: 20px 20px 0 0;
+  padding: 64px 0 22px;
+  background-color: #18003e;
+}
+
+.iconLogoText {
+  margin-bottom: 16px;
+  color: var(--white-1000);
+}
+
+.text {
+  margin-bottom: 20px;
+  line-height: 1.27;
+  max-width: 240px;
+}
+
+.iconsGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.opensource {
+  padding: 64px 0 35px;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.1);
+}
+
+.copy {
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: 400;
+  font-size: 14px;
+
+  line-height: 1.27;
+  color: var(--black-400);
+}
+
+.rightBlock {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.copyLink {
+  font-weight: 400;
+  font-size: 14px;
+
+  line-height: 1.27;
+  color: var(--black-400);
+}

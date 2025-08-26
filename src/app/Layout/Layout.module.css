@@ -1,0 +1,11 @@
+.main {
+  padding-top: 40px;
+  flex: 1;
+  background-color: var(--black-25);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 392px;
+  gap: 20px;
+}
