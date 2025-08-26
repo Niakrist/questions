@@ -1,0 +1,53 @@
+.section {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--black-50);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 34px;
+}
+
+.iconLogoText {
+  color: var(--text-black);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.link {
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--black-900);
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.link:hover {
+  color: var(--purple-800);
+  background-color: var(--bg);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.registration {
+  padding: 12px 29px;
+}
