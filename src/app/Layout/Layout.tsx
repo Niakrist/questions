@@ -10,7 +10,6 @@ const Layout = (): React.JSX.Element => {
   return (
     <>
       <Header />
-
       <main className={styles.main}>
         <Container className={styles.container}>
           <Outlet />
