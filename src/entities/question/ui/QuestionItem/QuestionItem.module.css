@@ -1,0 +1,63 @@
+.item {
+  padding: 24px 0 16px;
+  border-bottom: 0.5px solid var(--black-50);
+}
+
+.questionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--black-900);
+  position: relative;
+  cursor: pointer;
+}
+
+.questionTitle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--brand);
+  border-radius: 100%;
+}
+
+.iconChevron {
+  transform: rotate(0);
+  transition: transform 0.2s;
+}
+
+.show {
+  transform: rotate(-180deg);
+}
+
+.questionDetails {
+  padding: 24px 24px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wrapperRating {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.link {
+  align-self: end;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.1;
+  color: var(--purple-700);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

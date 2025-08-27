@@ -20,7 +20,7 @@ const Htag = ({ tag, sizeText, className, children, ...props }: IHtagProps) => {
     Tag,
     {
       ...props,
-      className: cn(className, {
+      className: cn(styles.title, className, {
         [styles.bigText]: sizeText === "big",
         [styles.mediumText]: sizeText === "medium",
       }),

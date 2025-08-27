@@ -1,6 +1,5 @@
 import React from "react";
 import cn from "classnames";
-
 import styles from "./Button.module.css";
 import type { IButtonProps } from "./Button.props";
 
@@ -23,6 +22,7 @@ const Button = ({
           [styles.textSmall]: textSize === "small",
           [styles.textNormal]: textSize === "normal",
           [styles.textBig]: textSize === "big",
+          [styles.textLarge]: textSize === "large",
           [styles.textPurple]: color === "purple",
           [styles.textBlack]: color === "black",
           [styles.textWhite]: color === "white",

@@ -3,6 +3,6 @@ export interface ILabelProps
     React.LiHTMLAttributes<HTMLLIElement>,
     HTMLLIElement
   > {
-  children: React.ReactNode;
   value: number;
+  name: string;
 }

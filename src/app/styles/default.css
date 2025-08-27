@@ -4,7 +4,12 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   font-family: var(--font-family);
 }
@@ -26,7 +31,11 @@ ul {
 
 li {
   padding: 0;
-  display: inline-block;
+  display: block;
+}
+
+a {
+  text-decoration: none;
 }
 
 h1,
@@ -34,10 +43,17 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   font-size: 16px;
   font-family: inherit;
   padding: 0;
   margin: 0;
   line-height: 1;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
