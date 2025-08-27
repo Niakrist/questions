@@ -4,3 +4,8 @@
   box-shadow: 0 4px 10px 0 rgba(106, 99, 118, 0.1);
   background-color: var(--white);
 }
+
+.title {
+  padding-bottom: 17px;
+  border-bottom: 0.5px solid var(--black-50);
+}
