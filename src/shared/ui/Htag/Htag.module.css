@@ -1,13 +1,13 @@
-.bigText {
+.title {
   font-weight: 500;
-  font-size: 24px;
   line-height: 1.2;
   color: var(--black-900);
 }
 
+.bigText {
+  font-size: 24px;
+}
+
 .mediumText {
-  font-weight: 500;
   font-size: 20px;
-  line-height: 1.2;
-  color: var(--black-900);
 }

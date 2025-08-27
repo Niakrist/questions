@@ -1,8 +1,13 @@
+.button {
+  display: flex;
+  align-items: center;
+}
+
 .textPurple {
   color: var(--purple-700);
 }
 
-.textBlack {
+.textBlack700 {
   color: var(--black-700);
 }
 
@@ -36,6 +41,10 @@
 
 .textBig {
   font-size: 18px;
+}
+
+.textLarge {
+  font-size: 20px;
 }
 
 .br2 {
