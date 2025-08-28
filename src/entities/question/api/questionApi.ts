@@ -9,7 +9,7 @@ export const questionApi = createApi({
     getQuestions: builder.query<IQuestionResponse, string>({
       query: (params) => {
         return {
-          url: `/public-questions/${params ? "?" + params : ""}`,
+          url: `/public-questions/${params ? params : ""}`,
         };
       },
     }),

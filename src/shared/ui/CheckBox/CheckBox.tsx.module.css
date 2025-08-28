@@ -1,0 +1,43 @@
+.input {
+  display: none;
+}
+
+.checkbox {
+  display: inline-block;
+  padding: 10px 12px;
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 1.2;
+  color: var(--black-800);
+
+  border: 1px solid var(--black-200);
+  background-color: transparent;
+  border-radius: 12px;
+
+  cursor: pointer;
+  transition: border 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.checkbox:hover {
+  border: 1px solid var(--purple-700);
+  background-color: var(--purple-700);
+  color: var(--white-1000);
+}
+
+.activeCheck {
+  border: 1px solid var(--purple-700);
+}
+
+.checkText {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.img {
+  width: 16px;
+  height: 16px;
+  object-fit: cover;
+  object-position: center;
+}

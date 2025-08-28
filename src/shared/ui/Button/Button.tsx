@@ -11,6 +11,7 @@ const Button = ({
   textSize,
   className,
   borderRadius,
+  underline,
   ...props
 }: IButtonProps): React.JSX.Element => {
   return (
@@ -28,10 +29,12 @@ const Button = ({
           [styles.textWhite]: color === "white",
           [styles.bgPurple]: bgColor === "purple",
           [styles.bgTransparent]: bgColor === "transparent",
+          [styles.fw400]: fontWeght === "fw400",
           [styles.fw500]: fontWeght === "fw500",
           [styles.fw600]: fontWeght === "fw600",
           [styles.br2]: borderRadius === "br2",
           [styles.br12]: borderRadius === "br12",
+          [styles.underline]: underline,
         },
         className
       )}>

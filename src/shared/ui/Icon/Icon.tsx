@@ -10,6 +10,7 @@ import {
   IconTelegram,
   IconFigma,
   IconArrowRound,
+  IconSearch,
 } from "@/shared/assets/icons";
 import type { IIconProps } from "./Icon.props";
 
@@ -25,6 +26,7 @@ const Icon = ({ name, className, ...props }: IIconProps): React.JSX.Element => {
     iconTelegram: <IconTelegram className={className} {...props} />,
     iconFigma: <IconFigma className={className} {...props} />,
     iconArrowRound: <IconArrowRound className={className} {...props} />,
+    iconSearch: <IconSearch className={className} {...props} />,
   };
 
   return icons[name];

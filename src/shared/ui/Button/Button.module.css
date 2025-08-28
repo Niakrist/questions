@@ -23,6 +23,10 @@
   background-color: transparent;
 }
 
+.fw400 {
+  font-weight: 400;
+}
+
 .fw500 {
   font-weight: 500;
 }
@@ -52,4 +56,8 @@
 }
 .br12 {
   border-radius: 12px;
+}
+
+.underline:hover {
+  text-decoration: underline;
 }
