@@ -5,5 +5,19 @@ import Text from "./Text/Text";
 import Container from "./Container/Container";
 import Icon from "./Icon/Icon";
 import RadioButton from "./RadioButton/RadioButton";
+import Input from "./Input/Input";
+import CategoryBlock from "./CategoryBlock/CategoryBlock";
+import CheckBox from "./CheckBox/CheckBox";
 
-export { Button, Container, Htag, Icon, Label, RadioButton, Text };
+export {
+  Button,
+  Container,
+  Htag,
+  Icon,
+  Label,
+  RadioButton,
+  Text,
+  Input,
+  CategoryBlock,
+  CheckBox,
+};

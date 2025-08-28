@@ -3,12 +3,13 @@ export interface IButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   color: "purple" | "white" | "black";
   bgColor: "purple" | "transparent";
-  fontWeght: "fw500" | "fw600";
+  fontWeght: "fw400" | "fw500" | "fw600";
   textSize: "small" | "normal" | "big" | "large";
   className?: string;
   borderRadius?: "br2" | "br12";
   icon?: React.JSX.Element;
+  underline?: boolean;
 }

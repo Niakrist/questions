@@ -8,6 +8,7 @@ import IconInstagram from "./IconInstagram";
 import IconTelegram from "./IconTelegram";
 import IconFigma from "./IconFigma";
 import IconArrowRound from "./IconArrowRound";
+import IconSearch from "./IconSearch";
 export {
   IconLogo,
   IconLogoText,
@@ -19,4 +20,5 @@ export {
   IconTelegram,
   IconFigma,
   IconArrowRound,
+  IconSearch,
 };
