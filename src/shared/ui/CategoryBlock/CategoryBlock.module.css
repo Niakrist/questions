@@ -1,0 +1,26 @@
+.block {
+}
+
+.name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--black-700);
+}
+
+.list {
+  overflow: hidden;
+  max-height: 180px;
+  padding: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.showAll {
+  max-height: 100%;
+}
+
+.item {
+  height: 39px;
+}
