@@ -5,19 +5,32 @@ import { useGetSkillsQuery } from "@/entities/skill/api/skillApi";
 import { useGetSpecializationQuery } from "@/entities/specialization/api/specializationApi";
 import { useQuestionFilters } from "@/features";
 import { LEVEL_COMPLEXITY, RATE_QUESTIONS } from "@/shared/constants";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "@/app/store/hooks";
+import { onReset } from "@/features/questionFilters/model/questionFiltersSlice";
 
 const QuestionFilter = (): React.JSX.Element => {
   const { data: skillList } = useGetSkillsQuery("");
   const { data: specializationList } = useGetSpecializationQuery("");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
-    handleChangeSpecialization,
-    handleChageSkills,
+    handleChangeItemFilter,
+    handleChangeArrayFilter,
     skills,
     specialization,
     rate,
     complexity,
+    title,
   } = useQuestionFilters();
+
+  const { search } = useLocation();
+
+  const resetFilter = () => {
+    dispatch(onReset());
+    navigate("/questions");
+  };
 
   if (!skillList || !specializationList) {
     return <div>Загрущка</div>;
@@ -25,7 +38,13 @@ const QuestionFilter = (): React.JSX.Element => {
 
   return (
     <aside className={styles.aside}>
-      <Input type="text" name="search" placeholder="Введите запрос…">
+      <Input
+        value={title}
+        handleChange={handleChangeItemFilter}
+        keyValue="title"
+        type="text"
+        name="search"
+        placeholder="Введите запрос…">
         <Icon name="iconSearch" />
       </Input>
 
@@ -33,7 +52,8 @@ const QuestionFilter = (): React.JSX.Element => {
         name="Специализация"
         list={specializationList.data}
         value={specialization}
-        handleChange={handleChangeSpecialization}>
+        handleChange={handleChangeItemFilter}
+        keyValue="specialization">
         <Button
           bgColor="transparent"
           color="purple"
@@ -46,7 +66,8 @@ const QuestionFilter = (): React.JSX.Element => {
         name="Навыки"
         list={skillList.data}
         value={skills.split(",")}
-        handleChange={handleChageSkills}
+        handleChange={handleChangeArrayFilter}
+        keyValue="skills"
         isArray>
         <Button
           bgColor="transparent"
@@ -61,14 +82,30 @@ const QuestionFilter = (): React.JSX.Element => {
         name="Уровень сложности"
         list={LEVEL_COMPLEXITY}
         value={complexity}
-        handleChange={handleChageSkills}
+        keyValue="complexity"
+        handleChange={handleChangeArrayFilter}
+        isArray
       />
       <CategoryBlock
         name="Рейтинг"
+        keyValue="rate"
         list={RATE_QUESTIONS}
         value={rate}
-        handleChange={handleChageSkills}
+        handleChange={handleChangeItemFilter}
       />
+
+      {search && (
+        <Button
+          className={styles.button}
+          bgColor="transparent"
+          color="purple"
+          textSize="normal"
+          fontWeght="fw500"
+          borderRadius="br12"
+          onClick={resetFilter}>
+          Сбросить
+        </Button>
+      )}
     </aside>
   );
 };

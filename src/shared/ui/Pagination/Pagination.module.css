@@ -1,0 +1,42 @@
+.list {
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnArrow {
+  font-size: 0;
+  color: var(--purple-700);
+}
+
+.right {
+  transform: rotate(180deg);
+}
+
+.button {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 2px 6px;
+  color: var(--black-900);
+  background-color: transparent;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.button:hover,
+.active {
+  background-color: var(--purple-700);
+  color: var(--white-1000);
+}
+
+.disabled {
+  color: var(--black-300);
+  cursor: no-drop;
+}

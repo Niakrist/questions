@@ -6,6 +6,8 @@ const initialState: IQuestionFilter = {
   skills: "",
   rate: "",
   complexity: "",
+  title: "",
+  page: "1",
 };
 
 export const questionFiltersSlice = createSlice({
@@ -22,11 +24,16 @@ export const questionFiltersSlice = createSlice({
       state,
       { payload }: PayloadAction<{ key: keyof IQuestionFilter; value: string }>
     ) => {
+      console.log("payload: ", payload);
       return { ...state, [payload.key]: payload.value };
+    },
+    onReset: () => {
+      return initialState;
     },
   },
 });
 
-export const { initializeFilter, changeFilter } = questionFiltersSlice.actions;
+export const { initializeFilter, changeFilter, onReset } =
+  questionFiltersSlice.actions;
 
 export default questionFiltersSlice.reducer;
