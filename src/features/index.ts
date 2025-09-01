@@ -1,1 +1,1 @@
-export { useQuestionFilters } from "./questionFilters";
+export { useQuestionFilters, useResetFilter } from "./questionFilters";

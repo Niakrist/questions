@@ -3,29 +3,44 @@ import styles from "./QuestionFilter.module.css";
 import { Button, CategoryBlock, Icon, Input } from "@/shared/ui";
 import { useGetSkillsQuery } from "@/entities/skill/api/skillApi";
 import { useGetSpecializationQuery } from "@/entities/specialization/api/specializationApi";
-import { useQuestionFilters } from "@/features";
+import { useQuestionFilters, useResetFilter } from "@/features";
 import { LEVEL_COMPLEXITY, RATE_QUESTIONS } from "@/shared/constants";
+import { useLocation } from "react-router-dom";
 
 const QuestionFilter = (): React.JSX.Element => {
-  const { data: skillList } = useGetSkillsQuery("");
-  const { data: specializationList } = useGetSpecializationQuery("");
+  const { data: skillList, isLoading: isLoadingSkills } = useGetSkillsQuery("");
+  const { data: specializationList, isLoading: isLoadingSpecialization } =
+    useGetSpecializationQuery("");
 
   const {
-    handleChangeSpecialization,
-    handleChageSkills,
+    handleChangeItemFilter,
+    handleChangeArrayFilter,
     skills,
     specialization,
     rate,
     complexity,
+    title,
   } = useQuestionFilters();
 
-  if (!skillList || !specializationList) {
-    return <div>Загрущка</div>;
-  }
+  const { search } = useLocation();
 
+  const resetFilter = useResetFilter("/questions");
+
+  if (isLoadingSkills || isLoadingSpecialization) {
+    return <div>Загрузка</div>;
+  }
+  if (!skillList || !specializationList) {
+    return <div>Не удалось получить данные</div>;
+  }
   return (
     <aside className={styles.aside}>
-      <Input type="text" name="search" placeholder="Введите запрос…">
+      <Input
+        value={title}
+        handleChange={handleChangeItemFilter}
+        keyValue="title"
+        type="text"
+        name="search"
+        placeholder="Введите запрос…">
         <Icon name="iconSearch" />
       </Input>
 
@@ -33,7 +48,8 @@ const QuestionFilter = (): React.JSX.Element => {
         name="Специализация"
         list={specializationList.data}
         value={specialization}
-        handleChange={handleChangeSpecialization}>
+        handleChange={handleChangeItemFilter}
+        keyValue="specialization">
         <Button
           bgColor="transparent"
           color="purple"
@@ -46,7 +62,8 @@ const QuestionFilter = (): React.JSX.Element => {
         name="Навыки"
         list={skillList.data}
         value={skills.split(",")}
-        handleChange={handleChageSkills}
+        handleChange={handleChangeArrayFilter}
+        keyValue="skills"
         isArray>
         <Button
           bgColor="transparent"
@@ -61,14 +78,30 @@ const QuestionFilter = (): React.JSX.Element => {
         name="Уровень сложности"
         list={LEVEL_COMPLEXITY}
         value={complexity}
-        handleChange={handleChageSkills}
+        keyValue="complexity"
+        handleChange={handleChangeArrayFilter}
+        isArray
       />
       <CategoryBlock
         name="Рейтинг"
+        keyValue="rate"
         list={RATE_QUESTIONS}
         value={rate}
-        handleChange={handleChageSkills}
+        handleChange={handleChangeItemFilter}
       />
+
+      {search && search !== "?page=1" && (
+        <Button
+          className={styles.button}
+          bgColor="transparent"
+          color="purple"
+          textSize="normal"
+          fontWeght="fw500"
+          borderRadius="br12"
+          onClick={resetFilter}>
+          Сбросить
+        </Button>
+      )}
     </aside>
   );
 };

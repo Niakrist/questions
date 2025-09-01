@@ -1,1 +1,1 @@
-export { useQuestionFilters } from "./hooks";
+export { useQuestionFilters, useResetFilter } from "./hooks";
