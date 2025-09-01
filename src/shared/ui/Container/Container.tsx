@@ -1,15 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./Container.module.css";
-
-export interface IContainerProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
-  children: React.ReactNode;
-  className?: string;
-}
+import type { IContainerProps } from "./Container.props";
 
 const Container = ({
   children,

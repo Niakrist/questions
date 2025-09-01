@@ -1,18 +1,7 @@
 import React from "react";
-import styles from "./Text.module.css";
 import cn from "classnames";
-
-export interface ITextProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLParagraphElement>,
-    HTMLParagraphElement
-  > {
-  children: React.ReactNode;
-  color: "white" | "grey" | "black";
-  textSize: "small" | "normal" | "big";
-  fontWeght: "fw400" | "fw500";
-  className?: string;
-}
+import type { ITextProps } from "./Text.props";
+import styles from "./Text.module.css";
 
 const Text = ({
   children,

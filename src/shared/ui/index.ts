@@ -8,6 +8,7 @@ import RadioButton from "./RadioButton/RadioButton";
 import Input from "./Input/Input";
 import CategoryBlock from "./CategoryBlock/CategoryBlock";
 import CheckBox from "./CheckBox/CheckBox";
+import Pagination from "./Pagination/Pagination";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   Input,
   CategoryBlock,
   CheckBox,
+  Pagination,
 };
