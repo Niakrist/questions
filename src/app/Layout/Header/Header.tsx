@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./Header.module.css";
 import { Button, Container, Icon } from "@/shared/ui";
 import { Link } from "react-router-dom";
+import { useResetFilter } from "@/features";
 
 const Header = (): React.JSX.Element => {
+  const resetFilter = useResetFilter();
+
   return (
     <section className={styles.section}>
       <Container className={styles.header}>
@@ -14,12 +17,15 @@ const Header = (): React.JSX.Element => {
               <Icon className={styles.iconLogoText} name="iconLogoText" />
             </Link>
             <li>
-              <Link className={styles.link} to="/questions">
+              <Link
+                onClick={resetFilter}
+                className={styles.link}
+                to="/questions">
                 База вопросов
               </Link>
             </li>
             <li>
-              <Link className={styles.link} to="#">
+              <Link onClick={resetFilter} className={styles.link} to="#">
                 Тренажер
               </Link>
             </li>

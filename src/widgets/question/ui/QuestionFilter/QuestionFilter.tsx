@@ -3,17 +3,14 @@ import styles from "./QuestionFilter.module.css";
 import { Button, CategoryBlock, Icon, Input } from "@/shared/ui";
 import { useGetSkillsQuery } from "@/entities/skill/api/skillApi";
 import { useGetSpecializationQuery } from "@/entities/specialization/api/specializationApi";
-import { useQuestionFilters } from "@/features";
+import { useQuestionFilters, useResetFilter } from "@/features";
 import { LEVEL_COMPLEXITY, RATE_QUESTIONS } from "@/shared/constants";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "@/app/store/hooks";
-import { onReset } from "@/features/questionFilters/model/questionFiltersSlice";
+import { useLocation } from "react-router-dom";
 
 const QuestionFilter = (): React.JSX.Element => {
-  const { data: skillList } = useGetSkillsQuery("");
-  const { data: specializationList } = useGetSpecializationQuery("");
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const { data: skillList, isLoading: isLoadingSkills } = useGetSkillsQuery("");
+  const { data: specializationList, isLoading: isLoadingSpecialization } =
+    useGetSpecializationQuery("");
 
   const {
     handleChangeItemFilter,
@@ -27,15 +24,14 @@ const QuestionFilter = (): React.JSX.Element => {
 
   const { search } = useLocation();
 
-  const resetFilter = () => {
-    dispatch(onReset());
-    navigate("/questions");
-  };
+  const resetFilter = useResetFilter("/questions");
 
-  if (!skillList || !specializationList) {
-    return <div>Загрущка</div>;
+  if (isLoadingSkills || isLoadingSpecialization) {
+    return <div>Загрузка</div>;
   }
-
+  if (!skillList || !specializationList) {
+    return <div>Не удалось получить данные</div>;
+  }
   return (
     <aside className={styles.aside}>
       <Input
@@ -94,7 +90,7 @@ const QuestionFilter = (): React.JSX.Element => {
         handleChange={handleChangeItemFilter}
       />
 
-      {search && (
+      {search && search !== "?page=1" && (
         <Button
           className={styles.button}
           bgColor="transparent"

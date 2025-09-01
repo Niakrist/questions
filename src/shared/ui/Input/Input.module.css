@@ -5,9 +5,8 @@
   gap: 8px;
   border-radius: 68px;
   border: 1px solid var(--black-50);
-  transition: border 0.2s;
   color: var(--black-300);
-  transition: color 0.2s;
+  transition: color 0.2s, border 0.2s;
 }
 
 .input {

@@ -1,21 +1,22 @@
 import React from "react";
-import styles from "./QuestionsListPage.module.css";
 import { useGetQuestionsQuery } from "@/entities/question/api/questionApi";
 import { Htag, Pagination } from "@/shared/ui";
 import { QuestionItem } from "@/entities";
 import { QuestionFilter } from "@/widgets";
 import { useLocation } from "react-router-dom";
 import { useQuestionFilters } from "@/features";
+import styles from "./QuestionsListPage.module.css";
 
 const QuestionsListPage = (): React.JSX.Element => {
   const { search } = useLocation();
-  const { data } = useGetQuestionsQuery(search ? search : "");
+  const { data, isLoading } = useGetQuestionsQuery(search ? search : "");
   const questionList = data?.data;
   const totalQuestion = data?.total;
   const limit = data?.limit;
   const { handleChangeItemFilter } = useQuestionFilters();
-  if (!questionList || !totalQuestion || !limit) return <div>Loading</div>;
 
+  if (isLoading) return <div>Loading</div>;
+  // !questionList || !totalQuestion || !limit
   return (
     <>
       <article className={styles.article}>
@@ -31,8 +32,8 @@ const QuestionsListPage = (): React.JSX.Element => {
         <Pagination
           keyValue="page"
           handleChange={handleChangeItemFilter}
-          totalQuestion={totalQuestion}
-          limit={limit}
+          totalQuestion={totalQuestion || 1}
+          limit={limit || 10}
         />
       </article>
       <QuestionFilter />

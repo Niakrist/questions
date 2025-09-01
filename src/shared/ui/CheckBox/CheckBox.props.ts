@@ -1,8 +1,10 @@
+import type { IQuestionFilter } from "@/shared/interface";
+
 export interface ICheckBoxProps {
   title: string;
-  id: number;
+  id: number | string;
   value: boolean;
-  handleChange: (keyValue: string, value: string) => void;
+  handleChange: (keyValue: keyof IQuestionFilter, value: string) => void;
   imageSrc?: string;
-  keyValue: string;
+  keyValue: keyof IQuestionFilter;
 }

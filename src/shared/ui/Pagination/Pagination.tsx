@@ -3,12 +3,13 @@ import styles from "./Pagination.module.css";
 import { useAppSelector } from "@/app/store/hooks";
 import cn from "classnames";
 import Icon from "../Icon/Icon";
+import type { IQuestionFilter } from "@/shared/interface";
 
 export interface IPaginationProps {
   totalQuestion: number;
   limit: number;
-  keyValue: string;
-  handleChange: (keyValue: string, value: string) => void;
+  keyValue: keyof IQuestionFilter;
+  handleChange: (keyValue: keyof IQuestionFilter, value: string) => void;
 }
 
 const Pagination = ({

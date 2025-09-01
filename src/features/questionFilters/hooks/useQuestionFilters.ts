@@ -1,8 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { useSearchParams } from "react-router-dom";
-import type { IQuestionFilter } from "../model/i-question-filter.interface";
+
 import { useEffect } from "react";
 import { changeFilter, initializeFilter } from "../model/questionFiltersSlice";
+import type { IQuestionFilter } from "@/shared/interface";
 
 type QuestionFilterKeys = keyof IQuestionFilter;
 

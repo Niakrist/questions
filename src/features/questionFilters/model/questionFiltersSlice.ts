@@ -1,5 +1,5 @@
+import type { IQuestionFilter } from "@/shared/interface";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IQuestionFilter } from "./i-question-filter.interface";
 
 const initialState: IQuestionFilter = {
   specialization: "",
