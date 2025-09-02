@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./QuestionFilter.module.css";
-import { Button, CategoryBlock, Icon, Input } from "@/shared/ui";
+import { Button, CategoryBlock, Icon, Input, Skeleton } from "@/shared/ui";
 import { useGetSkillsQuery } from "@/entities/skill/api/skillApi";
 import { useGetSpecializationQuery } from "@/entities/specialization/api/specializationApi";
 import { useQuestionFilters, useResetFilter } from "@/features";
@@ -26,12 +26,6 @@ const QuestionFilter = (): React.JSX.Element => {
 
   const resetFilter = useResetFilter("/questions");
 
-  if (isLoadingSkills || isLoadingSpecialization) {
-    return <div>Загрузка</div>;
-  }
-  if (!skillList || !specializationList) {
-    return <div>Не удалось получить данные</div>;
-  }
   return (
     <aside className={styles.aside}>
       <Input
@@ -44,35 +38,44 @@ const QuestionFilter = (): React.JSX.Element => {
         <Icon name="iconSearch" />
       </Input>
 
-      <CategoryBlock
-        name="Специализация"
-        list={specializationList.data}
-        value={specialization}
-        handleChange={handleChangeItemFilter}
-        keyValue="specialization">
-        <Button
-          bgColor="transparent"
-          color="purple"
-          textSize="small"
-          fontWeght="fw400"
-          underline
-        />
-      </CategoryBlock>
-      <CategoryBlock
-        name="Навыки"
-        list={skillList.data}
-        value={skills.split(",")}
-        handleChange={handleChangeArrayFilter}
-        keyValue="skills"
-        isArray>
-        <Button
-          bgColor="transparent"
-          color="purple"
-          textSize="small"
-          fontWeght="fw400"
-          underline
-        />
-      </CategoryBlock>
+      {isLoadingSpecialization ? (
+        <Skeleton count={4} type="specialization" />
+      ) : (
+        <CategoryBlock
+          name="Специализация"
+          list={specializationList?.data || []}
+          value={specialization}
+          handleChange={handleChangeItemFilter}
+          keyValue="specialization">
+          <Button
+            bgColor="transparent"
+            color="purple"
+            textSize="small"
+            fontWeght="fw400"
+            underline
+          />
+        </CategoryBlock>
+      )}
+
+      {isLoadingSkills ? (
+        <Skeleton count={4} type="specialization" />
+      ) : (
+        <CategoryBlock
+          name="Навыки"
+          list={skillList?.data || []}
+          value={skills.split(",")}
+          handleChange={handleChangeArrayFilter}
+          keyValue="skills"
+          isArray>
+          <Button
+            bgColor="transparent"
+            color="purple"
+            textSize="small"
+            fontWeght="fw400"
+            underline
+          />
+        </CategoryBlock>
+      )}
 
       <CategoryBlock
         name="Уровень сложности"

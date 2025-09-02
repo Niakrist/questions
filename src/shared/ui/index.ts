@@ -9,6 +9,7 @@ import Input from "./Input/Input";
 import CategoryBlock from "./CategoryBlock/CategoryBlock";
 import CheckBox from "./CheckBox/CheckBox";
 import Pagination from "./Pagination/Pagination";
+import Skeleton from './Skeleton/Skeleton'
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   CategoryBlock,
   CheckBox,
   Pagination,
+  Skeleton
 };
