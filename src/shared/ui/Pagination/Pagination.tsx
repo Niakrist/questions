@@ -25,7 +25,12 @@ const Pagination = ({
     String(index + 1)
   );
 
-  const cropPages = pages.slice(0, 5);
+  const cropPages =
+    Number(page) < 4
+      ? pages.slice(0, 7)
+      : pages.slice(Number(page) - 4, Number(page) + 3);
+
+  // const cropPages = pages.slice(0, 6);
 
   const handleChangePage = (p: string) => {
     handleChange(keyValue, p);
@@ -43,7 +48,7 @@ const Pagination = ({
     }
   };
 
-  return (
+  return quantityPage > 1 ? (
     <ul className={styles.list}>
       <li className={styles.item}>
         <button
@@ -73,6 +78,8 @@ const Pagination = ({
         </button>
       </li>
     </ul>
+  ) : (
+    <></>
   );
 };
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { useGetQuestionsQuery } from "@/entities/question/api/questionApi";
-import { Htag, Pagination } from "@/shared/ui";
+import { Button, Htag, Pagination, Skeleton, Text } from "@/shared/ui";
 import { QuestionItem } from "@/entities";
 import { QuestionFilter } from "@/widgets";
 import { useLocation } from "react-router-dom";
-import { useQuestionFilters } from "@/features";
+import { useQuestionFilters, useResetFilter } from "@/features";
 import styles from "./QuestionsListPage.module.css";
 
 const QuestionsListPage = (): React.JSX.Element => {
@@ -14,20 +14,44 @@ const QuestionsListPage = (): React.JSX.Element => {
   const totalQuestion = data?.total;
   const limit = data?.limit;
   const { handleChangeItemFilter } = useQuestionFilters();
+  const resetFilter = useResetFilter();
 
-  if (isLoading) return <div>Loading</div>;
-  // !questionList || !totalQuestion || !limit
   return (
     <>
       <article className={styles.article}>
         <Htag className={styles.title} tag="h1" sizeText="big">
           Вопросы React, JavaScript
         </Htag>
-        <ul>
-          {questionList?.map((question) => (
-            <QuestionItem key={question.id} question={question} />
-          ))}
-        </ul>
+        {isLoading ? (
+          <Skeleton count={10} type="question" />
+        ) : questionList?.length ? (
+          <ul>
+            {questionList?.map((question) => (
+              <QuestionItem key={question.id} question={question} />
+            ))}
+          </ul>
+        ) : (
+          <>
+            <Text
+              className={styles.text}
+              color="black"
+              fontWeght="fw500"
+              textSize="big">
+              К сожалению, по запросу ничего не найдено. Попробуйте изменить
+              запрос или воспользуйтесь нашими категориями
+            </Text>
+            <Button
+              onClick={resetFilter}
+              className={styles.button}
+              bgColor="transparent"
+              color="purple"
+              borderRadius="br12"
+              fontWeght="fw400"
+              textSize="normal">
+              Сбросить фильтр
+            </Button>
+          </>
+        )}
 
         <Pagination
           keyValue="page"
