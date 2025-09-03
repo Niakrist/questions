@@ -35,7 +35,7 @@ const Header = (): React.JSX.Element => {
           <Button
             bgColor="transparent"
             color="purple"
-            fontWeght="fw600"
+            fontWeight="fw600"
             textSize="normal">
             Вход
           </Button>
@@ -43,7 +43,7 @@ const Header = (): React.JSX.Element => {
             className={styles.registration}
             bgColor="purple"
             color="white"
-            fontWeght="fw500"
+            fontWeight="fw500"
             textSize="big"
             borderRadius="br12">
             Регистрация

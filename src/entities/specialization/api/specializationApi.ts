@@ -1,6 +1,6 @@
 import { BASE_SPECIALIZATIONS_URL } from "@/shared/constants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { ISpecializationResponse } from "../model/specialization.interface";
+import type { ISpecializationResponse } from "../model/specialization-response.interface";
 
 export const specializationApi = createApi({
   reducerPath: "specializationApi",

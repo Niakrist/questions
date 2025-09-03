@@ -3,9 +3,9 @@ export interface ITextProps
     React.HTMLAttributes<HTMLParagraphElement>,
     HTMLParagraphElement
   > {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   color: "white" | "grey" | "black";
   textSize: "small" | "normal" | "big";
-  fontWeght: "fw400" | "fw500";
-  className?: string;
+  fontWeight: "fw400" | "fw500";
+  className: string;
 }

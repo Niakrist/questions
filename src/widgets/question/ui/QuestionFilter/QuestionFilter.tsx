@@ -1,9 +1,14 @@
 import React from "react";
 import styles from "./QuestionFilter.module.css";
-import { Button, CategoryBlock, Icon, Input, Skeleton } from "@/shared/ui";
+import { Button, CategoryBlock, Skeleton } from "@/shared/ui";
 import { useGetSkillsQuery } from "@/entities/skill/api/skillApi";
 import { useGetSpecializationQuery } from "@/entities/specialization/api/specializationApi";
-import { useQuestionFilters, useResetFilter } from "@/features";
+import {
+  FilterCheckboxList,
+  SearchInput,
+  useQuestionFilters,
+  useResetFilter,
+} from "@/features";
 import { LEVEL_COMPLEXITY, RATE_QUESTIONS } from "@/shared/constants";
 import { useLocation } from "react-router-dom";
 
@@ -28,70 +33,58 @@ const QuestionFilter = (): React.JSX.Element => {
 
   return (
     <aside className={styles.aside}>
-      <Input
+      <SearchInput
+        name="search"
+        type="text"
+        keyValue="title"
         value={title}
         handleChange={handleChangeItemFilter}
-        keyValue="title"
-        type="text"
-        name="search"
-        placeholder="Введите запрос…">
-        <Icon name="iconSearch" />
-      </Input>
+        placeholder="Введите запрос…"></SearchInput>
 
-      {isLoadingSpecialization ? (
-        <Skeleton count={4} type="specialization" />
-      ) : (
-        <CategoryBlock
-          name="Специализация"
-          list={specializationList?.data || []}
-          value={specialization}
-          handleChange={handleChangeItemFilter}
-          keyValue="specialization">
-          <Button
-            bgColor="transparent"
-            color="purple"
-            textSize="small"
-            fontWeght="fw400"
-            underline
+      <CategoryBlock name="Специализация" hasButton>
+        {isLoadingSpecialization ? (
+          <Skeleton count={4} type="specialization" />
+        ) : (
+          <FilterCheckboxList
+            currentValue={specialization}
+            list={specializationList?.data || []}
+            onChange={handleChangeItemFilter}
+            filterKey="specialization"
           />
-        </CategoryBlock>
-      )}
-
-      {isLoadingSkills ? (
-        <Skeleton count={4} type="specialization" />
-      ) : (
-        <CategoryBlock
-          name="Навыки"
-          list={skillList?.data || []}
-          value={skills.split(",")}
-          handleChange={handleChangeArrayFilter}
-          keyValue="skills"
-          isArray>
-          <Button
-            bgColor="transparent"
-            color="purple"
-            textSize="small"
-            fontWeght="fw400"
-            underline
+        )}
+      </CategoryBlock>
+      <CategoryBlock name="Навыки" hasButton>
+        {isLoadingSkills ? (
+          <Skeleton count={8} type="skills" />
+        ) : (
+          <FilterCheckboxList
+            currentValue={skills.split(",")}
+            list={skillList?.data || []}
+            onChange={handleChangeArrayFilter}
+            filterKey="skills"
+            isArray
           />
-        </CategoryBlock>
-      )}
+        )}
+      </CategoryBlock>
 
-      <CategoryBlock
-        name="Уровень сложности"
-        list={LEVEL_COMPLEXITY}
-        value={complexity}
-        keyValue="complexity"
-        handleChange={handleChangeArrayFilter}
-        isArray
-      />
-      <CategoryBlock
-        name="Рейтинг"
-        keyValue="rate"
-        list={RATE_QUESTIONS}
-        value={rate}
-        handleChange={handleChangeItemFilter}
-      />
+      <CategoryBlock name="Уровень сложности">
+        <FilterCheckboxList
+          currentValue={complexity}
+          list={LEVEL_COMPLEXITY}
+          onChange={handleChangeArrayFilter}
+          filterKey="complexity"
+          isArray
+        />
+      </CategoryBlock>
+
+      <CategoryBlock name="Рейтинг">
+        <FilterCheckboxList
+          currentValue={rate}
+          list={RATE_QUESTIONS}
+          onChange={handleChangeItemFilter}
+          filterKey="rate"
+        />
+      </CategoryBlock>
 
       {search && search !== "?page=1" && (
         <Button
@@ -99,7 +92,7 @@ const QuestionFilter = (): React.JSX.Element => {
           bgColor="transparent"
           color="purple"
           textSize="normal"
-          fontWeght="fw500"
+          fontWeight="fw500"
           borderRadius="br12"
           onClick={resetFilter}>
           Сбросить
