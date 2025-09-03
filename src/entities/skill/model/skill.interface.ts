@@ -1,4 +1,4 @@
-import type { ISpecialization } from "./specialization.unterface";
+import type { ISpecialization } from "@/entities/specialization/model/specialization";
 
 export interface ISkill {
   id: number;

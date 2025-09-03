@@ -30,11 +30,12 @@ const QuestionItem = ({ question }: IQuestionItemProps): React.JSX.Element => {
             <Label value={question.complexity} name="Cложность:" />
           </div>
           <div
+            className={styles.text}
             dangerouslySetInnerHTML={{
               __html: question.shortAnswer,
             }}
           />
-          <Link className={styles.link} to={`/questions/${question.id}`}>
+          <Link className={styles.link} to={`./${question.id}`}>
             Подробнее <Icon name="iconArrow" />
           </Link>
         </div>

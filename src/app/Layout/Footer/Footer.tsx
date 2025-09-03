@@ -14,7 +14,7 @@ const Footer = (): React.JSX.Element => {
             className={styles.text}
             color="white"
             textSize="normal"
-            fontWeght="fw400">
+            fontWeight="fw400">
             Выбери, каким будет IT завтра, вместе с нами
           </Text>
           <ul className={styles.iconsGroup}>
@@ -25,7 +25,7 @@ const Footer = (): React.JSX.Element => {
             </li>
             <li>
               <Link to="#">
-                <Icon name="iconGutHub" />
+                <Icon name="iconGitHub" />
               </Link>
             </li>
 
@@ -44,7 +44,7 @@ const Footer = (): React.JSX.Element => {
           <Text
             className={styles.opensource}
             color="grey"
-            fontWeght="fw400"
+            fontWeight="fw400"
             textSize="small">
             YeaHub — это полностью открытый проект, призванный объединить
             и улучшить IT-сферу. Наш исходный код доступен для просмотра
@@ -61,7 +61,7 @@ const Footer = (): React.JSX.Element => {
               <ul className={styles.iconsGroup}>
                 <li>
                   <Link to="#">
-                    <Icon name="iconGutHub" />
+                    <Icon name="iconGitHub" />
                   </Link>
                 </li>
                 <li>

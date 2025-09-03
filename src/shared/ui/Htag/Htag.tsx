@@ -3,19 +3,22 @@ import cn from "classnames";
 import styles from "./Htag.module.css";
 import type { IHtagProps } from "./Htag.props";
 
-const Htag = ({ tag, sizeText, className, children, ...props }: IHtagProps) => {
-  const Tag = tag as keyof React.JSX.IntrinsicElements;
-
-  return React.createElement(
-    Tag,
-    {
-      ...props,
-      className: cn(styles.title, className, {
+const Htag = ({
+  tag: Tag,
+  sizeText,
+  className,
+  children,
+  ...props
+}: IHtagProps): React.JSX.Element => {
+  return (
+    <Tag
+      {...props}
+      className={cn(styles.title, className, {
         [styles.bigText]: sizeText === "big",
         [styles.mediumText]: sizeText === "medium",
-      }),
-    },
-    children
+      })}>
+      {children}
+    </Tag>
   );
 };
 

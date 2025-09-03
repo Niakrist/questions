@@ -6,7 +6,7 @@ export interface IButtonProps
   children?: React.ReactNode;
   color: "purple" | "white" | "black";
   bgColor: "purple" | "transparent";
-  fontWeght: "fw400" | "fw500" | "fw600";
+  fontWeight: "fw400" | "fw500" | "fw600";
   textSize: "small" | "normal" | "big" | "large";
   className?: string;
   borderRadius?: "br2" | "br12";

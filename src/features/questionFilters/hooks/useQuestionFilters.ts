@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { useEffect } from "react";
 import { changeFilter, initializeFilter } from "../model/questionFiltersSlice";
-import type { IQuestionFilter } from "@/shared/interface";
+import type { IQuestionFilter } from "../model/i-question-filter.interface";
 
 type QuestionFilterKeys = keyof IQuestionFilter;
 
@@ -20,6 +20,9 @@ export const useQuestionFilters = () => {
       const filterKey = key as QuestionFilterKeys;
       initialFilter[filterKey] = value;
     }
+
+    console.log("initialFilter: ", initialFilter);
+
     dispatch(initializeFilter(initialFilter));
   }, [dispatch]);
 
@@ -58,10 +61,7 @@ export const useQuestionFilters = () => {
     setSearchParams(searchParams);
   }, [specialization, skills, rate, complexity, title, page]);
 
-  const handleChangeItemFilter = (
-    key: keyof IQuestionFilter,
-    value: string
-  ) => {
+  const handleChangeItemFilter = (key: string, value: string) => {
     if (searchParams.get(key) === value) {
       dispatch(changeFilter({ key, value: "" }));
     } else {
@@ -70,10 +70,7 @@ export const useQuestionFilters = () => {
     }
   };
 
-  const handleChangeArrayFilter = (
-    key: keyof IQuestionFilter,
-    value: string
-  ) => {
+  const handleChangeArrayFilter = (key: string, value: string) => {
     const currentParams = searchParams.get(key);
     let params = currentParams?.split(",") || [];
     if (params.includes(value)) {

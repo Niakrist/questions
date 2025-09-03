@@ -1,6 +1,3 @@
-.block {
-}
-
 .name {
   font-weight: 400;
   font-size: 14px;
@@ -8,7 +5,7 @@
   color: var(--black-700);
 }
 
-.list {
+.wrapper {
   overflow: hidden;
   max-height: 180px;
   padding: 8px 0;
@@ -21,6 +18,13 @@
   max-height: 100%;
 }
 
-.item {
-  height: 39px;
+.button {
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration-skip-ink: none;
+  color: var(--purple-800);
+}
+
+.button:hover {
+  text-decoration: underline;
 }

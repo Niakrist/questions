@@ -1,0 +1,6 @@
+.wrapperBlock {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: var(--white-900);
+  box-shadow: 0 4px 10px 0 rgba(106, 99, 118, 0.1);
+}

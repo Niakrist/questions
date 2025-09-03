@@ -3,7 +3,7 @@ import IconLogoText from "./IconLogoText";
 import IconArrow from "./IconArrow";
 import IconChevron from "./IconChevron";
 import IconYoutube from "./IconYoutube";
-import IconGutHub from "./IconGutHub";
+import IconGitHub from "./IconGitHub";
 import IconInstagram from "./IconInstagram";
 import IconTelegram from "./IconTelegram";
 import IconFigma from "./IconFigma";
@@ -15,7 +15,7 @@ export {
   IconArrow,
   IconChevron,
   IconYoutube,
-  IconGutHub,
+  IconGitHub,
   IconInstagram,
   IconTelegram,
   IconFigma,

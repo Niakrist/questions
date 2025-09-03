@@ -1,7 +1,7 @@
 import React from "react";
 import type { IIconProps } from "./IIconProps";
 
-const IconGutHub = ({ className, ...props }: IIconProps): React.JSX.Element => {
+const IconGitHub = ({ className, ...props }: IIconProps): React.JSX.Element => {
   return (
     <svg
       className={className}
@@ -47,4 +47,4 @@ const IconGutHub = ({ className, ...props }: IIconProps): React.JSX.Element => {
   );
 };
 
-export default IconGutHub;
+export default IconGitHub;

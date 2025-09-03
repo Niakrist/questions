@@ -18,13 +18,13 @@ export const questionFiltersSlice = createSlice({
       state,
       { payload }: PayloadAction<Partial<IQuestionFilter>>
     ) => {
+      console.log("payload: ", payload);
       return { ...state, ...payload };
     },
     changeFilter: (
       state,
       { payload }: PayloadAction<{ key: keyof IQuestionFilter; value: string }>
     ) => {
-      console.log("payload: ", payload);
       return { ...state, [payload.key]: payload.value };
     },
     onReset: () => {

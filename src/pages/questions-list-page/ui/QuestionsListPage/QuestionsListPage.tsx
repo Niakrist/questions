@@ -35,7 +35,7 @@ const QuestionsListPage = (): React.JSX.Element => {
             <Text
               className={styles.text}
               color="black"
-              fontWeght="fw500"
+              fontWeight="fw500"
               textSize="big">
               К сожалению, по запросу ничего не найдено. Попробуйте изменить
               запрос или воспользуйтесь нашими категориями
@@ -46,7 +46,7 @@ const QuestionsListPage = (): React.JSX.Element => {
               bgColor="transparent"
               color="purple"
               borderRadius="br12"
-              fontWeght="fw400"
+              fontWeight="fw400"
               textSize="normal">
               Сбросить фильтр
             </Button>
