@@ -8,7 +8,7 @@ const Text = ({
   className,
   color,
   textSize,
-  fontWeght,
+  fontWeight,
   ...props
 }: ITextProps): React.JSX.Element => {
   return (
@@ -19,8 +19,8 @@ const Text = ({
           [styles.textWhite]: color === "white",
           [styles.textBlack]: color === "black",
           [styles.textGrey]: color === "grey",
-          [styles.fw400]: fontWeght === "fw400",
-          [styles.fw500]: fontWeght === "fw500",
+          [styles.fw400]: fontWeight === "fw400",
+          [styles.fw500]: fontWeight === "fw500",
           [styles.textSmall]: textSize === "small",
           [styles.textNormal]: textSize === "normal",
           [styles.textBig]: textSize === "big",

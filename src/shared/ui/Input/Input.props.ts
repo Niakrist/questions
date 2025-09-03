@@ -1,6 +1,4 @@
-import type { IQuestionFilter } from "@/shared/interface";
-
-export interface ISearchProps
+export interface IInputProps
   extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
@@ -9,6 +7,5 @@ export interface ISearchProps
   children?: React.ReactNode;
   placeholder: string;
   type: "text";
-  handleChange: (keyValue: keyof IQuestionFilter, value: string) => void;
-  keyValue: keyof IQuestionFilter;
+  defaultValue?: string;
 }

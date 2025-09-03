@@ -1,46 +1,49 @@
 import React from "react";
 import cn from "classnames";
-import styles from "./CheckBox.tsx.module.css";
-import type { ICheckBoxProps } from "./CheckBox.props";
+import styles from "./CheckBox.module.css";
+
+interface ICheckBoxProps
+  extends React.DetailedHTMLProps<
+    React.LiHTMLAttributes<HTMLLIElement>,
+    HTMLLIElement
+  > {
+  title: string;
+  id: string;
+  currentValue: string | string[];
+  onCheck: (item: string) => void;
+  isArray?: boolean;
+}
 
 const CheckBox = ({
   title,
   id,
-  value,
-  imageSrc,
-  handleChange,
-  keyValue,
+  currentValue,
+  onCheck,
+  isArray,
 }: ICheckBoxProps): React.JSX.Element => {
+  const isChecked = isArray
+    ? Array.isArray(currentValue) && currentValue.includes(id)
+    : currentValue === id;
+
   return (
-    <>
+    <li className={styles.item}>
       <input
         type="checkbox"
-        checked={value}
-        onChange={() => handleChange(keyValue, String(id))}
+        checked={isChecked}
+        onChange={() => onCheck(id)}
         className={styles.input}
         id={title + id}
       />
       <label
         className={cn(styles.checkbox, {
-          [styles.activeCheck]: value,
+          [styles.activeCheck]: isChecked
+            ? currentValue.includes(id)
+            : currentValue === id,
         })}
         htmlFor={title + id}>
-        <div className={styles.checkText}>
-          {imageSrc ? (
-            <>
-              {/* <img
-                className={styles.img}
-                src={imageSrc || "bug.jpg"}
-                alt={title}
-              /> */}
-              <span>{title}</span>
-            </>
-          ) : (
-            <span>{title}</span>
-          )}
-        </div>
+        <div className={styles.checkText}>{title}</div>
       </label>
-    </>
+    </li>
   );
 };
 
