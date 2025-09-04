@@ -27,7 +27,7 @@ const FilterCheckboxList = ({
           id={item.id}
           currentValue={currentValue}
           onCheck={handleCheck}
-          isArray
+          isArray={isArray}
         />
       ))}
     </>
