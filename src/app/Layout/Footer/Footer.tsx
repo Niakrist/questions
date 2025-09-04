@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Footer.module.css";
 import { Container, Icon, Text } from "@/shared/ui";
 import { Link } from "react-router-dom";
+import styles from "./Footer.module.css";
 
 const Footer = (): React.JSX.Element => {
   const currentData = new Date();
