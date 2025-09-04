@@ -1,0 +1,16 @@
+.text {
+  line-height: 1.5;
+  margin-bottom: 24px;
+  padding-top: 22px;
+}
+
+.button {
+  padding: 12px 29px;
+  border: 1px solid var(--purple-700);
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.button:hover {
+  color: var(--white);
+  background-color: var(--purple-700);
+}

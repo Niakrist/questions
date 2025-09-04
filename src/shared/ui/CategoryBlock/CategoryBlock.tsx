@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import styles from "./CategoryBlock.module.css";
 import cn from "classnames";
-
-interface ICategoryBlockProps {
-  name: string;
-  children: React.ReactNode;
-  hasButton?: boolean;
-}
+import type { ICategoryBlockProps } from "./CategoryBlock.props";
 
 const CategoryBlock = ({
   name,
   children,
   hasButton,
+  ...props
 }: ICategoryBlockProps): React.JSX.Element => {
   const [isShowAll, setIsShowAll] = useState(false);
 
@@ -20,7 +16,7 @@ const CategoryBlock = ({
   };
 
   return (
-    <div>
+    <div {...props}>
       <p className={styles.name}>{name}</p>
       <ul className={cn(styles.wrapper, { [styles.showAll]: isShowAll })}>
         {children}

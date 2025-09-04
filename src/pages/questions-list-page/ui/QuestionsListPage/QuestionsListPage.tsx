@@ -1,10 +1,10 @@
 import React from "react";
-import { useGetQuestionsQuery } from "@/entities/question/api/questionApi";
-import { Button, Htag, Pagination, Skeleton, Text } from "@/shared/ui";
-import { QuestionItem } from "@/entities";
-import { QuestionFilter } from "@/widgets";
 import { useLocation } from "react-router-dom";
-import { useQuestionFilters, useResetFilter } from "@/features";
+import { Htag, Skeleton } from "@/shared/ui";
+import { QuestionItem } from "@/entities";
+import { useGetQuestionsQuery } from "@/entities/question/api/questionApi";
+import { QuestionPagination } from "@/features";
+import { QuestionFilter, QuestionNotFound } from "@/widgets";
 import styles from "./QuestionsListPage.module.css";
 
 const QuestionsListPage = (): React.JSX.Element => {
@@ -13,8 +13,6 @@ const QuestionsListPage = (): React.JSX.Element => {
   const questionList = data?.data;
   const totalQuestion = data?.total;
   const limit = data?.limit;
-  const { handleChangeItemFilter } = useQuestionFilters();
-  const resetFilter = useResetFilter();
 
   return (
     <>
@@ -31,33 +29,11 @@ const QuestionsListPage = (): React.JSX.Element => {
             ))}
           </ul>
         ) : (
-          <>
-            <Text
-              className={styles.text}
-              color="black"
-              fontWeight="fw500"
-              textSize="big">
-              К сожалению, по запросу ничего не найдено. Попробуйте изменить
-              запрос или воспользуйтесь нашими категориями
-            </Text>
-            <Button
-              onClick={resetFilter}
-              className={styles.button}
-              bgColor="transparent"
-              color="purple"
-              borderRadius="br12"
-              fontWeight="fw400"
-              textSize="normal">
-              Сбросить фильтр
-            </Button>
-          </>
+          <QuestionNotFound />
         )}
-
-        <Pagination
-          keyValue="page"
-          handleChange={handleChangeItemFilter}
-          totalQuestion={totalQuestion || 1}
+        <QuestionPagination
           limit={limit || 10}
+          totalItems={totalQuestion || 1}
         />
       </article>
       <QuestionFilter />

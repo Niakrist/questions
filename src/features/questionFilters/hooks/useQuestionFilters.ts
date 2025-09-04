@@ -1,11 +1,18 @@
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { useSearchParams } from "react-router-dom";
-
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { changeFilter, initializeFilter } from "../model/questionFiltersSlice";
 import type { IQuestionFilter } from "../model/i-question-filter.interface";
 
 type QuestionFilterKeys = keyof IQuestionFilter;
+const QUESTION_FILTER_KEYS: QuestionFilterKeys[] = [
+  "specialization",
+  "skills",
+  "rate",
+  "complexity",
+  "title",
+  "page",
+];
 
 export const useQuestionFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,10 +25,9 @@ export const useQuestionFilters = () => {
     const initialFilter: Partial<IQuestionFilter> = {};
     for (const [key, value] of searchParams) {
       const filterKey = key as QuestionFilterKeys;
+
       initialFilter[filterKey] = value;
     }
-
-    console.log("initialFilter: ", initialFilter);
 
     dispatch(initializeFilter(initialFilter));
   }, [dispatch]);
@@ -62,15 +68,26 @@ export const useQuestionFilters = () => {
   }, [specialization, skills, rate, complexity, title, page]);
 
   const handleChangeItemFilter = (key: string, value: string) => {
+    if (!QUESTION_FILTER_KEYS.includes(key as QuestionFilterKeys)) {
+      return;
+    }
+    const filterKey = key as QuestionFilterKeys;
     if (searchParams.get(key) === value) {
-      dispatch(changeFilter({ key, value: "" }));
+      dispatch(changeFilter({ key: filterKey, value: "" }));
     } else {
-      dispatch(changeFilter({ key, value }));
-      if (key !== "page") dispatch(changeFilter({ key: "page", value: "1" }));
+      dispatch(changeFilter({ key: filterKey, value }));
+      if (filterKey !== "page") {
+        dispatch(changeFilter({ key: "page", value: "1" }));
+      }
     }
   };
 
   const handleChangeArrayFilter = (key: string, value: string) => {
+    if (!QUESTION_FILTER_KEYS.includes(key as QuestionFilterKeys)) {
+      return;
+    }
+    const filterKey = key as QuestionFilterKeys;
+
     const currentParams = searchParams.get(key);
     let params = currentParams?.split(",") || [];
     if (params.includes(value)) {
@@ -78,7 +95,7 @@ export const useQuestionFilters = () => {
     } else {
       params.push(value);
     }
-    dispatch(changeFilter({ key, value: params.join(",") }));
+    dispatch(changeFilter({ key: filterKey, value: params.join(",") }));
     dispatch(changeFilter({ key: "page", value: "1" }));
   };
 

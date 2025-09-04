@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import styles from "./QuestionItem.module.css";
-import { Icon, Label } from "@/shared/ui";
 import { Link } from "react-router-dom";
 import cn from "classnames";
+import { Icon, Label } from "@/shared/ui";
 import type { IQuestionItemProps } from "./QuestionItem.props";
+import styles from "./QuestionItem.module.css";
 
 const QuestionItem = ({ question }: IQuestionItemProps): React.JSX.Element => {
   const [isShowDetail, setIsShowDetail] = useState(false);

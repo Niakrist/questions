@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./QuestionFilter.module.css";
+import { useLocation } from "react-router-dom";
 import { Button, CategoryBlock, Skeleton } from "@/shared/ui";
 import { useGetSkillsQuery } from "@/entities/skill/api/skillApi";
 import { useGetSpecializationQuery } from "@/entities/specialization/api/specializationApi";
@@ -10,7 +10,7 @@ import {
   useResetFilter,
 } from "@/features";
 import { LEVEL_COMPLEXITY, RATE_QUESTIONS } from "@/shared/constants";
-import { useLocation } from "react-router-dom";
+import styles from "./QuestionFilter.module.css";
 
 const QuestionFilter = (): React.JSX.Element => {
   const { data: skillList, isLoading: isLoadingSkills } = useGetSkillsQuery("");

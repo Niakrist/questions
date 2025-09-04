@@ -1,4 +1,4 @@
-import type { ISpecialization } from "@/shared/interface";
+import type { ISpecialization } from "./specialization";
 
 export interface ISpecializationResponse {
   page: number;

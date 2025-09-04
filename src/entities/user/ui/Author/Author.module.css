@@ -1,0 +1,15 @@
+.author {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--black-800);
+}
+
+.accent {
+  color: var(--purple-700);
+}
+
+.accent:hover {
+  text-decoration: underline;
+}

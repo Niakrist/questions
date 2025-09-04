@@ -1,18 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./CheckBox.module.css";
-
-interface ICheckBoxProps
-  extends React.DetailedHTMLProps<
-    React.LiHTMLAttributes<HTMLLIElement>,
-    HTMLLIElement
-  > {
-  title: string;
-  id: string;
-  currentValue: string | string[];
-  onCheck: (item: string) => void;
-  isArray?: boolean;
-}
+import type { ICheckBoxProps } from "./CheckBox.props";
 
 const CheckBox = ({
   title,
@@ -20,6 +9,7 @@ const CheckBox = ({
   currentValue,
   onCheck,
   isArray,
+  ...props
 }: ICheckBoxProps): React.JSX.Element => {
   const isChecked = isArray
     ? Array.isArray(currentValue) && currentValue.includes(id)
@@ -28,6 +18,7 @@ const CheckBox = ({
   return (
     <li className={styles.item}>
       <input
+        {...props}
         type="checkbox"
         checked={isChecked}
         onChange={() => onCheck(id)}

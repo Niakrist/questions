@@ -1,1 +1,6 @@
-export { QuestionFilter } from "./ui";
+export {
+  QuestionFilter,
+  QuestionNotFound,
+  QuestionAnswer,
+  QuestionInfo,
+} from "./ui";

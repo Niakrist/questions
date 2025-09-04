@@ -1,4 +1,4 @@
-import type { ISkill } from "@/shared/interface";
+import type { ISkill } from "./skill.interface";
 
 export interface ISkillRequest {
   page: number;

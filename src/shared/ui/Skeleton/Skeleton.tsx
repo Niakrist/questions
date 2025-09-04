@@ -1,11 +1,7 @@
 import React from "react";
-import styles from "./Skeleton.module.css";
 import cn from "classnames";
-
-export interface ISkeletonProps {
-  count: number;
-  type: "question" | "specialization" | "skills";
-}
+import type { ISkeletonProps } from "./Skeleton.props";
+import styles from "./Skeleton.module.css";
 
 const Skeleton = ({ count, type }: ISkeletonProps): React.JSX.Element => {
   return (

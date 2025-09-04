@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
-import styles from "./Container.module.css";
 import type { IContainerProps } from "./Container.props";
+import styles from "./Container.module.css";
 
 const Container = ({
   children,
@@ -9,7 +9,7 @@ const Container = ({
   ...props
 }: IContainerProps): React.JSX.Element => {
   return (
-    <div className={cn(styles.container, className)} {...props}>
+    <div {...props} className={cn(styles.container, className)}>
       {children}
     </div>
   );

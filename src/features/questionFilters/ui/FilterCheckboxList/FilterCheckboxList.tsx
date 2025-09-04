@@ -1,15 +1,6 @@
 import React from "react";
-import type { ISkill, ISpecialization } from "@/entities";
 import { CheckBox } from "@/shared/ui";
-import type { IMockData } from "@/shared/interface/mock-data.interface";
-
-interface IFilterCheckboxList {
-  list: ISpecialization[] | ISkill[] | IMockData[];
-  currentValue: string;
-  onChange: (key: string, value: string) => void;
-  filterKey: string;
-  isArray?: boolean;
-}
+import type { IFilterCheckboxList } from "./FilterCheckboxList.props";
 
 const FilterCheckboxList = ({
   list,

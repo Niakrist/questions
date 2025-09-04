@@ -1,50 +1,19 @@
 import React from "react";
-import styles from "./Pagination.module.css";
-import { useAppSelector } from "@/app/store/hooks";
 import cn from "classnames";
 import Icon from "../Icon/Icon";
-import type { IQuestionFilter } from "@/shared/interface";
-
-export interface IPaginationProps {
-  totalQuestion: number;
-  limit: number;
-  keyValue: keyof IQuestionFilter;
-  handleChange: (keyValue: keyof IQuestionFilter, value: string) => void;
-}
+import type { IPaginationProps } from "./Pagination.props";
+import styles from "./Pagination.module.css";
 
 const Pagination = ({
-  totalQuestion,
-  limit,
-  keyValue,
+  currentPage,
+  totalItems,
+  quantityPage,
   handleChange,
+  pages,
 }: IPaginationProps): React.JSX.Element => {
-  const { page } = useAppSelector((state) => state.questionFilters);
-  const quantityPage = Math.ceil(totalQuestion / limit);
-
-  const pages = Array.from({ length: quantityPage }, (_, index) =>
-    String(index + 1)
-  );
-
-  const cropPages =
-    Number(page) < 4
-      ? pages.slice(0, 7)
-      : pages.slice(Number(page) - 4, Number(page) + 3);
-
-  // const cropPages = pages.slice(0, 6);
-
-  const handleChangePage = (p: string) => {
-    handleChange(keyValue, p);
-  };
-
-  const handleNextPage = () => {
-    if (Number(page) <= quantityPage) {
-      handleChange(keyValue, String(Number(page) + 1));
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (Number(page) > 1) {
-      handleChange(keyValue, String(Number(page) - 1));
+  const handleChangePage = (p: number) => {
+    if (p >= 1 && p <= totalItems) {
+      handleChange(p);
     }
   };
 
@@ -52,27 +21,29 @@ const Pagination = ({
     <ul className={styles.list}>
       <li className={styles.item}>
         <button
-          onClick={handlePrevPage}
+          onClick={() => handleChangePage(Number(currentPage) - 1)}
           className={cn(styles.btnArrow, {
-            [styles.disabled]: Number(page) <= 1,
+            [styles.disabled]: Number(currentPage) <= 1,
           })}>
           <Icon name="iconArrowRound" />
         </button>
       </li>
-      {cropPages.map((p) => (
+      {pages.map((p) => (
         <li className={styles.item} key={p}>
           <button
-            onClick={() => handleChangePage(p)}
-            className={cn(styles.button, { [styles.active]: p === page })}>
+            onClick={() => handleChangePage(Number(p))}
+            className={cn(styles.button, {
+              [styles.active]: p === currentPage,
+            })}>
             {p}
           </button>
         </li>
       ))}
       <li className={styles.item}>
         <button
-          onClick={handleNextPage}
+          onClick={() => handleChangePage(Number(currentPage) + 1)}
           className={cn(styles.btnArrow, styles.right, {
-            [styles.disabled]: Number(page) >= quantityPage,
+            [styles.disabled]: Number(currentPage) >= quantityPage,
           })}>
           <Icon name="iconArrowRound" />
         </button>

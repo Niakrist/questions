@@ -13,6 +13,7 @@ const Text = ({
 }: ITextProps): React.JSX.Element => {
   return (
     <p
+      {...props}
       className={cn(
         styles.text,
         {
@@ -26,8 +27,7 @@ const Text = ({
           [styles.textBig]: textSize === "big",
         },
         className
-      )}
-      {...props}>
+      )}>
       {children}
     </p>
   );

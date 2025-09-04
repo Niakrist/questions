@@ -1,20 +1,13 @@
 import React from "react";
 import styles from "./WrapperBlock.module.css";
-
-export interface IWrapperBlockProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
-  children: React.ReactNode;
-}
+import type { IWrapperBlockProps } from "./WrapperBlock.props";
 
 const WrapperBlock = ({
   children,
   ...props
 }: IWrapperBlockProps): React.JSX.Element => {
   return (
-    <div className={styles.wrapperBlock} {...props}>
+    <div {...props} className={styles.wrapperBlock}>
       {children}
     </div>
   );

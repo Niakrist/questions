@@ -5,18 +5,13 @@ import type { IInputProps } from "./Input.props";
 const Input = ({
   name,
   children,
-  defaultValue,
+  value,
   ...props
 }: IInputProps): React.JSX.Element => {
   return (
     <label className={styles.label} htmlFor={name}>
       {children}
-      <input
-        {...props}
-        className={styles.input}
-        defaultValue={defaultValue}
-        name={name}
-      />
+      <input {...props} className={styles.input} value={value} name={name} />
     </label>
   );
 };
